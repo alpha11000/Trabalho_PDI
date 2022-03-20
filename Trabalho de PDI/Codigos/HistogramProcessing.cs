@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Drawing;
 
 namespace Trabalho_de_PDI
@@ -59,12 +60,11 @@ namespace Trabalho_de_PDI
         }
 
         //retorna uma matriz equalizada a partir da matriz original de HSV's
-        public static HSV[,] getEqualizedHsvMatrix(HSV[,] originalHsvMatrix, Dictionary<double, double> equalizedValues = null)
+        public static HSV[,] getMappedHsvMatrix(HSV[,] originalHsvMatrix, Dictionary<double, double> valuesMap)
         {
-            //caso o usuário não determine os valores equalizados, gerar novos valores
-            if(equalizedValues == null)
+            if(valuesMap == null)
             {
-                equalizedValues = getNewValuesToHistogramEqualize(originalHsvMatrix);
+                return null;
             }
 
             HSV[,] output = new HSV[originalHsvMatrix.GetLength(0), originalHsvMatrix.GetLength(1)];
@@ -77,15 +77,68 @@ namespace Trabalho_de_PDI
                     HSV atualHSV = originalHsvMatrix[i, j];
 
                     //define o novo valor de V a partir do elemento atual
-                    if (equalizedValues.ContainsKey(atualHSV.V))
+                    if (valuesMap.ContainsKey(atualHSV.V))
                     {
-                        output[i, j] = new HSV(atualHSV.H, atualHSV.S, equalizedValues[atualHSV.V]);
+                        output[i, j] = new HSV(atualHSV.H, atualHSV.S, valuesMap[atualHSV.V]);
                     }
                     else
                     {
                         output[i, j] = atualHSV;
                     }
                 }
+            }
+
+            return output;
+        }
+
+        public static Dictionary<double, double> getNewValuesToHistogramEspecification
+            (Dictionary<double, double> equalizedValues, Dictionary<double, double> targetEqualizedValues)
+        {
+            Dictionary<double, double> output = new Dictionary<double, double>();
+
+            foreach (var peer in equalizedValues)
+            {
+                var leftCloserValues = targetEqualizedValues.Where(i => i.Value <= peer.Value);
+                var rightCloserValues = targetEqualizedValues.Where(i => i.Value > peer.Value);
+
+                var leftCloser =  (leftCloserValues  != null && leftCloserValues.Count()  > 0) ? leftCloserValues.Last() : new KeyValuePair<double, double>(-1, -1);
+                var rightCloser = (rightCloserValues != null && rightCloserValues.Count() > 0) ? rightCloserValues.First() : new KeyValuePair<double, double>(-1, -1);
+
+
+                KeyValuePair<double, double> closer;
+
+                if (leftCloser.Key == -1)
+                {
+                    if(rightCloser.Key == -1)
+                    {
+                        closer = peer; //caso haja erro na especificação
+                    }
+                    else
+                    {
+                        closer = rightCloser;
+                    }
+                }
+                else
+                {
+                    if(rightCloser.Value == -1)
+                    {
+                        closer = leftCloser;
+                    }
+                    else
+                    {
+                        if ((peer.Value - leftCloser.Value) <= (rightCloser.Value - peer.Value))
+                        {
+                            closer = leftCloser;
+                        }
+                        else
+                        {
+                            closer = rightCloser;
+                        }
+                    }
+                }
+
+                output.Add(peer.Key, closer.Key);
+
             }
 
             return output;
@@ -119,7 +172,6 @@ namespace Trabalho_de_PDI
                 prSum += peer.Value;
                 output.Add(peer.Key, prSum);
 
-                Console.WriteLine("Chave: " + peer.Key + " Valor: " + peer.Value);
             }
 
             return output;

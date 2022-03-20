@@ -68,6 +68,7 @@ namespace Trabalho_de_PDI
             CanaisButton.Enabled = true;
             ExibirHistogramaButton.Enabled = true;
             EqualizarButton.Enabled = true;
+            especificarButton.Enabled = true;
         }
 
         private void label3_Click(object sender, EventArgs e)
@@ -78,7 +79,8 @@ namespace Trabalho_de_PDI
         private void button1_Click_2(object sender, EventArgs e)
         {
             HSV[,] hsvMatrix = ColorProcessing.convertBitmapToHsvMatrix(bitmapImage);
-            HSV[,] equalizedHsvMatrix = HistogramProcessing.getEqualizedHsvMatrix(hsvMatrix);
+            Dictionary<double, double> equalizedValuesMap = HistogramProcessing.getNewValuesToHistogramEqualize(hsvMatrix);
+            HSV[,] equalizedHsvMatrix = HistogramProcessing.getMappedHsvMatrix(hsvMatrix, equalizedValuesMap);
             SortedDictionary<double, int> equalizedHistogram = HistogramProcessing.getHistogramFromHsvMatrix(equalizedHsvMatrix);
 
             new exibirHistograma(equalizedHistogram, 2, "Histograma Equalizado (valor, quantidade)").Show();
@@ -118,11 +120,36 @@ namespace Trabalho_de_PDI
 
         private void principal_Load(object sender, EventArgs e)
         {
-            Color color = Color.FromArgb(10, 235, 184);
-            //Color color = Color.FromArgb(255, 10, 255);
-            HSV hsv = ColorProcessing.convertRgbToHsv(color);
-
-            testeLabel.Text = "H -> " + hsv.H + " S-> " + hsv.S + " V -> " + hsv.V;
         }
+
+        private void especificarButton_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Escolha uma imagem com a distribuição desejada", "Especificar histograma", MessageBoxButtons.OK);
+
+            if(OpenFileDialog.ShowDialog() == DialogResult.OK)
+            {
+                Bitmap especified;
+                try
+                {
+                    especified = new Bitmap(Image.FromFile(OpenFileDialog.FileName));
+                }
+                catch (Exception) { return; }
+
+                HSV[,] originalHsvMatrix = ColorProcessing.convertBitmapToHsvMatrix(bitmapImage);
+                HSV[,] especifiedHsvMatrix = ColorProcessing.convertBitmapToHsvMatrix(especified);
+
+                Dictionary<double, double> originalEqualized = HistogramProcessing.getNewValuesToHistogramEqualize(originalHsvMatrix);
+                Dictionary<double, double> especifiedEqualized = HistogramProcessing.getNewValuesToHistogramEqualize(especifiedHsvMatrix);
+
+                Dictionary<double, double> mappedValues = HistogramProcessing.getNewValuesToHistogramEspecification(originalEqualized, especifiedEqualized);
+                HSV[,] especifiedOutput = HistogramProcessing.getMappedHsvMatrix(originalHsvMatrix, mappedValues);
+                SortedDictionary<double, int> newHistogram = HistogramProcessing.getHistogramFromHsvMatrix(especifiedOutput);
+
+                new exibirHistograma(newHistogram, 3, "Histograma especificado (valor, quantidade)").Show();
+                new exibirImagem(especifiedOutput, fileName + "(Especificada").Show();
+            
+            }
+        }
+
     }
 }
