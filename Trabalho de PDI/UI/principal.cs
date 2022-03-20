@@ -35,7 +35,7 @@ namespace Trabalho_de_PDI
                     new exibirImagem(image, fileName).Show();
                     enableButtons();
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
                     MessageBox.Show("Escolha um arquivo válido!");
                 }
@@ -83,9 +83,9 @@ namespace Trabalho_de_PDI
 
             new exibirHistograma(equalizedHistogram, 2, "Histograma Equalizado (valor, quantidade)").Show();
 
-            Bitmap equalizedImage = ColorProcessing.convertHsvMatrixToBitmap(equalizedHsvMatrix);
+            //Bitmap equalizedImage = ColorProcessing.convertHsvMatrixToBitmap(equalizedHsvMatrix);
 
-            new exibirImagem(equalizedImage).Show();
+            new exibirImagem(equalizedHsvMatrix, fileName + "(equalized)").Show();
         }
 
         private void button2_Click(object sender, EventArgs e)

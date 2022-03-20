@@ -5,7 +5,7 @@
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{2E446472-62B4-4213-A6B9-3F909D362BFD}</ProjectGuid>
-    <OutputType>WinExe</OutputType>
+    <OutputType>Exe</OutputType>
     <RootNamespace>Trabalho_de_PDI</RootNamespace>
     <AssemblyName>Trabalho de PDI</AssemblyName>
     <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
@@ -32,16 +32,10 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject />
+  </PropertyGroup>
   <ItemGroup>
-    <Reference Include="MetroFramework, Version=1.4.0.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a, processorArchitecture=MSIL">
-      <HintPath>..\packages\MetroModernUI.1.4.0.0\lib\net\MetroFramework.dll</HintPath>
-    </Reference>
-    <Reference Include="MetroFramework.Design, Version=1.4.0.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a, processorArchitecture=MSIL">
-      <HintPath>..\packages\MetroModernUI.1.4.0.0\lib\net\MetroFramework.Design.dll</HintPath>
-    </Reference>
-    <Reference Include="MetroFramework.Fonts, Version=1.4.0.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a, processorArchitecture=MSIL">
-      <HintPath>..\packages\MetroModernUI.1.4.0.0\lib\net\MetroFramework.Fonts.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Windows.Forms.DataVisualization" />
@@ -59,94 +53,52 @@
     <Compile Include="Codigos\HistogramProcessing.cs" />
     <Compile Include="Codigos\ColorProcessing.cs" />
     <Compile Include="Codigos\HSV.cs" />
-    <Compile Include="EscolherCanalDeCor.cs">
+    <Compile Include="UI\EscolherCanalDeCor.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="EscolherCanalDeCor.Designer.cs">
+    <Compile Include="UI\EscolherCanalDeCor.Designer.cs">
       <DependentUpon>EscolherCanalDeCor.cs</DependentUpon>
     </Compile>
-    <Compile Include="exibirHistograma.cs">
+    <Compile Include="UI\exibirHistograma.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="exibirHistograma.Designer.cs">
+    <Compile Include="UI\exibirHistograma.Designer.cs">
       <DependentUpon>exibirHistograma.cs</DependentUpon>
     </Compile>
-    <Compile Include="exibirImagem.cs">
+    <Compile Include="UI\exibirImagem.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="exibirImagem.Designer.cs">
+    <Compile Include="UI\exibirImagem.Designer.cs">
       <DependentUpon>exibirImagem.cs</DependentUpon>
     </Compile>
-    <Compile Include="principal.cs">
+    <Compile Include="UI\principal.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="principal.Designer.cs">
+    <Compile Include="UI\principal.Designer.cs">
       <DependentUpon>principal.cs</DependentUpon>
     </Compile>
-    <Compile Include="TelaDeEspera.cs">
+    <Compile Include="UI\TelaDeEspera.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="TelaDeEspera.Designer.cs">
+    <Compile Include="UI\TelaDeEspera.Designer.cs">
       <DependentUpon>TelaDeEspera.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Form3.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Form3.Designer.cs">
-      <DependentUpon>Form3.cs</DependentUpon>
-    </Compile>
-    <Compile Include="inicio.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="inicio.Designer.cs">
-      <DependentUpon>inicio.cs</DependentUpon>
-    </Compile>
-    <Compile Include="InterfacePDI.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="InterfacePDI.Designer.cs">
-      <DependentUpon>InterfacePDI.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="TelaInicio.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="TelaInicio.Designer.cs">
-      <DependentUpon>TelaInicio.cs</DependentUpon>
-    </Compile>
-    <Compile Include="teste.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="teste.Designer.cs">
-      <DependentUpon>teste.cs</DependentUpon>
-    </Compile>
-    <EmbeddedResource Include="EscolherCanalDeCor.resx">
+    <EmbeddedResource Include="UI\EscolherCanalDeCor.resx">
       <DependentUpon>EscolherCanalDeCor.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="exibirHistograma.resx">
+    <EmbeddedResource Include="UI\exibirHistograma.resx">
       <DependentUpon>exibirHistograma.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="exibirImagem.resx">
+    <EmbeddedResource Include="UI\exibirImagem.resx">
       <DependentUpon>exibirImagem.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="principal.resx">
+    <EmbeddedResource Include="UI\principal.resx">
       <DependentUpon>principal.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="TelaDeEspera.resx">
+    <EmbeddedResource Include="UI\TelaDeEspera.resx">
       <DependentUpon>TelaDeEspera.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Form3.resx">
-      <DependentUpon>Form3.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="inicio.resx">
-      <DependentUpon>inicio.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="InterfacePDI.pt-BR.resx">
-      <DependentUpon>InterfacePDI.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="InterfacePDI.resx">
-      <DependentUpon>InterfacePDI.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -158,13 +110,6 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
-    <EmbeddedResource Include="TelaInicio.resx">
-      <DependentUpon>TelaInicio.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="teste.resx">
-      <DependentUpon>teste.cs</DependentUpon>
-    </EmbeddedResource>
-    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -181,5 +126,6 @@
   <ItemGroup>
     <None Include="Resources\folder-open-solid-white.png" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

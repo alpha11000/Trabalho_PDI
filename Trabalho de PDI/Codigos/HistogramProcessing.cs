@@ -118,6 +118,8 @@ namespace Trabalho_de_PDI
             {
                 prSum += peer.Value;
                 output.Add(peer.Key, prSum);
+
+                Console.WriteLine("Chave: " + peer.Key + " Valor: " + peer.Value);
             }
 
             return output;

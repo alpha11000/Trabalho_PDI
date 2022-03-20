@@ -14,7 +14,6 @@ namespace Trabalho_de_PDI
         [STAThread]
         static void Main()
         {
-            Console.WriteLine(1000);
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new principal());

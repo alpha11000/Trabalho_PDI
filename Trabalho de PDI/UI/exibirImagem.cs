@@ -13,12 +13,22 @@ namespace Trabalho_de_PDI
 {
     public partial class exibirImagem : Form
     {
+        HSV[,] hsvMatrix = null;
 
         public exibirImagem(Image image,  String imageName = "imagem")
         {
             InitializeComponent();
             this.Text = imageName;
             imagem.Image = image;
+        }
+
+        public exibirImagem(HSV[,] hsvMatrix, String imageName = "imagem")
+        {
+            InitializeComponent();
+            this.Text = imageName;
+            this.hsvMatrix = hsvMatrix;
+            saturacaoPanel.Visible = true;
+            imagem.Image = ColorProcessing.convertHsvMatrixToBitmap(hsvMatrix);
         }
 
         private void ExportarButton_Click(object sender, EventArgs e)
@@ -29,6 +39,18 @@ namespace Trabalho_de_PDI
             {
                 imagem.Image.Save(saveFileDialog.FileName, ImageFormat.Png);
             }
+        }
+
+        private void exibirImagem_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void saturacaoButton_Click(object sender, EventArgs e)
+        {
+            double saturationIncrease = saturacaoTrack.Value / 100.0;
+            HSV[,] saturationIncreased = ColorProcessing.increaseHsvMatrixSaturation(hsvMatrix, saturationIncrease);
+            imagem.Image = ColorProcessing.convertHsvMatrixToBitmap(saturationIncreased);
         }
     }
 }

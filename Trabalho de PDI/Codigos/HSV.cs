@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Trabalho_de_PDI
 {
-    internal class HSV
+    public class HSV
     {
         public double H { get; set; }
         public double S { get; set; }

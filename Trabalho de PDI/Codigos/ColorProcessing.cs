@@ -9,6 +9,27 @@ namespace Trabalho_de_PDI
 {
     internal class ColorProcessing
     {
+        public static HSV[,] increaseHsvMatrixSaturation(HSV[,] hsvMatrix, double increaseValue)//increase = [0,1]
+        {
+            HSV[,] output = new HSV[hsvMatrix.GetLength(0), hsvMatrix.GetLength(1)];
+
+            for(int i = 0; i < hsvMatrix.GetLength(0); i++)
+            {
+                for(int j = 0; j < hsvMatrix.GetLength(1); j++)
+                {
+                    HSV originalValue = hsvMatrix[i, j];
+                    double newSaturation = originalValue.S + increaseValue;
+
+                    if (newSaturation > 1) newSaturation = 1;
+
+                    HSV newValue = new HSV(originalValue.H, newSaturation, originalValue.V);
+                    output[i, j] = newValue;
+                }
+            }
+
+            return output;
+        }
+
         //realiza a conversão de RGB para HSV
         public static HSV convertRgbToHsv(Color rgb)
         {
