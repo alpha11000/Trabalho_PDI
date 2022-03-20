@@ -36,10 +36,14 @@
             ((System.ComponentModel.ISupportInitialize)(this.histogramaChart)).BeginInit();
             this.SuspendLayout();
             // 
-            // histrogramaChart
+            // histogramaChart
             // 
             this.histogramaChart.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
+            this.histogramaChart.BorderSkin.BackColor = System.Drawing.Color.Black;
+            this.histogramaChart.BorderSkin.BorderColor = System.Drawing.Color.Gainsboro;
             chartArea1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
+            chartArea1.BorderColor = System.Drawing.Color.IndianRed;
+            chartArea1.CursorX.LineColor = System.Drawing.Color.White;
             chartArea1.Name = "ChartArea1";
             this.histogramaChart.ChartAreas.Add(chartArea1);
             this.histogramaChart.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -48,12 +52,15 @@
             legend1.Name = "Legend1";
             this.histogramaChart.Legends.Add(legend1);
             this.histogramaChart.Location = new System.Drawing.Point(0, 0);
-            this.histogramaChart.Name = "histrogramaChart";
+            this.histogramaChart.Name = "histogramaChart";
+            this.histogramaChart.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.Pastel;
             series1.ChartArea = "ChartArea1";
-            series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.StackedColumn;
+            series1.LabelForeColor = System.Drawing.Color.White;
             series1.Legend = "Legend1";
             series1.Name = "Quantidade";
+            series1.XValueType = System.Windows.Forms.DataVisualization.Charting.ChartValueType.Int32;
             series1.YValuesPerPoint = 2;
+            series1.YValueType = System.Windows.Forms.DataVisualization.Charting.ChartValueType.Int32;
             this.histogramaChart.Series.Add(series1);
             this.histogramaChart.Size = new System.Drawing.Size(572, 361);
             this.histogramaChart.TabIndex = 0;
