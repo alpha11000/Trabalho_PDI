@@ -11,11 +11,26 @@ namespace Trabalho_de_PDI
         private String fileName;
         private Image image = null;
         private Bitmap bitmapImage = null;
+        private HSV[,] hsvMatrix = null;
+        SortedDictionary<double, int> histogram = null;
+        HSV[,] equalizedHsvMatrix = null;
+        SortedDictionary<double, int> equalizedHistogram = null;
+        Dictionary<double, double> equalizedValuesMap = null;
 
         public principal()
         {
             OpenFileDialog = new OpenFileDialog();
             InitializeComponent();
+        }
+
+        private void enableButtons()
+        {
+            PBbutton.Enabled = true;
+            CanaisButton.Enabled = true;
+            ExibirHistogramaButton.Enabled = true;
+            EqualizarButton.Enabled = true;
+            EspecificarButton.Enabled = true;
+            ExibirImagemButton.Visible = true;
         }
 
         private void AbrirButton_Click(object sender, EventArgs e)
@@ -28,29 +43,31 @@ namespace Trabalho_de_PDI
                     
                     image = Image.FromFile(tempfileName);
                     bitmapImage = new Bitmap(image);
+                    hsvMatrix = ColorProcessing.convertBitmapToHsvMatrix(bitmapImage);
+
+                    histogram = null;
+                    equalizedHsvMatrix = null;
+                    equalizedHistogram = null;
 
                     fileName = tempfileName.Substring(tempfileName.LastIndexOf('\\') + 1);
                     fileNameLabel.Text = tempfileName;
 
-                    new exibirImagem(image, fileName).Show();
                     enableButtons();
                 }
                 catch (Exception)
                 {
-                    MessageBox.Show("Escolha um arquivo válido!");
+                    MessageBox.Show("Escolha um arquivo válido!", "Erro ao abrir", 0,  MessageBoxIcon.Error);
                 }
             }
-
-            
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void PBButtonClick(object sender, EventArgs e)
         {
             Bitmap blackAndWhite = ColorProcessing.ConvertToBlackWhite(bitmapImage);
             new exibirImagem(blackAndWhite, fileName + " (preto e branco)").Show();
         }
 
-        private void button1_Click_1(object sender, EventArgs e)
+        private void channelsButtonClick(object sender, EventArgs e)
         {
             Bitmap redC = ColorProcessing.getEspecificColorChanel(bitmapImage, 0);
             new exibirImagem(redC, fileName + " (vermelho)").Show();
@@ -62,64 +79,26 @@ namespace Trabalho_de_PDI
             new exibirImagem(blueC, fileName + " (azul)").Show();
         }
 
-        private void enableButtons()
+        private void equalizarHistogramaButtonClick(object sender, EventArgs e)
         {
-            PBbutton.Enabled = true;
-            CanaisButton.Enabled = true;
-            ExibirHistogramaButton.Enabled = true;
-            EqualizarButton.Enabled = true;
-            especificarButton.Enabled = true;
-        }
+            if(equalizedHsvMatrix == null)
+            {
+                equalizedValuesMap = HistogramProcessing.getNewValuesToHistogramEqualize(hsvMatrix, histogram);
 
-        private void label3_Click(object sender, EventArgs e)
-        {
+                equalizedHsvMatrix = HistogramProcessing.getMappedHsvMatrix(hsvMatrix, equalizedValuesMap);
+                equalizedHistogram = HistogramProcessing.getHistogramFromHsvMatrix(equalizedHsvMatrix);
 
-        }
-
-        private void button1_Click_2(object sender, EventArgs e)
-        {
-            HSV[,] hsvMatrix = ColorProcessing.convertBitmapToHsvMatrix(bitmapImage);
-            Dictionary<double, double> equalizedValuesMap = HistogramProcessing.getNewValuesToHistogramEqualize(hsvMatrix);
-            HSV[,] equalizedHsvMatrix = HistogramProcessing.getMappedHsvMatrix(hsvMatrix, equalizedValuesMap);
-            SortedDictionary<double, int> equalizedHistogram = HistogramProcessing.getHistogramFromHsvMatrix(equalizedHsvMatrix);
+            }
 
             new exibirHistograma(equalizedHistogram, 2, "Histograma Equalizado (valor, quantidade)").Show();
-
-            //Bitmap equalizedImage = ColorProcessing.convertHsvMatrixToBitmap(equalizedHsvMatrix);
-
             new exibirImagem(equalizedHsvMatrix, fileName + "(equalized)").Show();
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private void exibirHistogramaButtonClick(object sender, EventArgs e)
         {
-            //SortedDictionary<int,int> histogram = HistogramProcessing.getHistogramFromImage(ImageProcessing.ConvertToBlackWhite(bitmapImage));
-
-            // new exibirHistograma(histogram).Show();
-            //EscolherCanalDeCor escolher =  new EscolherCanalDeCor("gerar histograma a partir de qual canal?", bitmapImage);
-            //escolher.Owner = this;
-            //escolher.ShowDialog();
-
-
-            HSV[,] hsvMatrix = ColorProcessing.convertBitmapToHsvMatrix(bitmapImage);
-            //Bitmap bitmap = ColorProcessing.convertHsvMatrixToBitmap(hsvMatrix);
-
-            //new exibirImagem(bitmap).Show();
-
+            if(histogram == null) histogram = HistogramProcessing.getHistogramFromHsvMatrix(hsvMatrix);
             
-            SortedDictionary<double, int> histogram = HistogramProcessing.getHistogramFromHsvMatrix(hsvMatrix);
             new exibirHistograma(histogram, 0).Show();
-
-            /*HSV[,] equalizedHsv = HistogramProcessing.getEqualizedHsvMatrix(hsvMatrix);
-            SortedDictionary<double, int> equalizedHistogram = HistogramProcessing.getHistogramFromHsvMatrix(equalizedHsv);
-            Bitmap equalizedBitmap = ColorProcessing.convertHsvMatrixToBitmap(equalizedHsv);
-
-
-            new exibirHistograma(equalizedHistogram, 1).Show();
-            new exibirImagem(equalizedBitmap).Show();*/
-        }
-
-        private void principal_Load(object sender, EventArgs e)
-        {
         }
 
         private void especificarButton_Click(object sender, EventArgs e)
@@ -135,14 +114,19 @@ namespace Trabalho_de_PDI
                 }
                 catch (Exception) { return; }
 
-                HSV[,] originalHsvMatrix = ColorProcessing.convertBitmapToHsvMatrix(bitmapImage);
                 HSV[,] especifiedHsvMatrix = ColorProcessing.convertBitmapToHsvMatrix(especified);
-
-                Dictionary<double, double> originalEqualized = HistogramProcessing.getNewValuesToHistogramEqualize(originalHsvMatrix);
                 Dictionary<double, double> especifiedEqualized = HistogramProcessing.getNewValuesToHistogramEqualize(especifiedHsvMatrix);
 
-                Dictionary<double, double> mappedValues = HistogramProcessing.getNewValuesToHistogramEspecification(originalEqualized, especifiedEqualized);
-                HSV[,] especifiedOutput = HistogramProcessing.getMappedHsvMatrix(originalHsvMatrix, mappedValues);
+                if(equalizedValuesMap == null)
+                {
+                    equalizedValuesMap = HistogramProcessing.getNewValuesToHistogramEqualize(hsvMatrix);
+                }
+
+                
+
+                Dictionary<double, double> mappedValues = HistogramProcessing.getNewValuesToHistogramEspecification(equalizedValuesMap, especifiedEqualized);
+                
+                HSV[,] especifiedOutput = HistogramProcessing.getMappedHsvMatrix(hsvMatrix, mappedValues);
                 SortedDictionary<double, int> newHistogram = HistogramProcessing.getHistogramFromHsvMatrix(especifiedOutput);
 
                 new exibirHistograma(newHistogram, 3, "Histograma especificado (valor, quantidade)").Show();
@@ -151,5 +135,9 @@ namespace Trabalho_de_PDI
             }
         }
 
+        private void exibirImagemButtonClick(object sender, EventArgs e)
+        {
+            new exibirImagem(image, fileName).Show();
+        }
     }
 }

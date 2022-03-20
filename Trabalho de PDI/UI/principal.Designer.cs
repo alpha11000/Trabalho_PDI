@@ -37,12 +37,13 @@
             this.EqualizarButton = new System.Windows.Forms.Button();
             this.ExibirHistogramaButton = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
-            this.especificarButton = new System.Windows.Forms.Button();
+            this.EspecificarButton = new System.Windows.Forms.Button();
             this.converterButton = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.compararButton = new System.Windows.Forms.Button();
+            this.ExibirImagemButton = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // label1
@@ -93,7 +94,7 @@
             this.PBbutton.TabIndex = 3;
             this.PBbutton.Text = "Preto e Branco";
             this.PBbutton.UseVisualStyleBackColor = false;
-            this.PBbutton.Click += new System.EventHandler(this.button1_Click);
+            this.PBbutton.Click += new System.EventHandler(this.PBButtonClick);
             // 
             // CanaisButton
             // 
@@ -108,13 +109,14 @@
             this.CanaisButton.TabIndex = 4;
             this.CanaisButton.Text = "Exibir Canais";
             this.CanaisButton.UseVisualStyleBackColor = false;
-            this.CanaisButton.Click += new System.EventHandler(this.button1_Click_1);
+            this.CanaisButton.Click += new System.EventHandler(this.channelsButtonClick);
             // 
             // fileNameLabel
             // 
             this.fileNameLabel.AutoSize = true;
             this.fileNameLabel.ForeColor = System.Drawing.Color.White;
             this.fileNameLabel.Location = new System.Drawing.Point(109, 31);
+            this.fileNameLabel.MaximumSize = new System.Drawing.Size(180, 0);
             this.fileNameLabel.Name = "fileNameLabel";
             this.fileNameLabel.Size = new System.Drawing.Size(0, 13);
             this.fileNameLabel.TabIndex = 5;
@@ -132,7 +134,7 @@
             this.EqualizarButton.TabIndex = 8;
             this.EqualizarButton.Text = "Equalizar";
             this.EqualizarButton.UseVisualStyleBackColor = false;
-            this.EqualizarButton.Click += new System.EventHandler(this.button1_Click_2);
+            this.EqualizarButton.Click += new System.EventHandler(this.equalizarHistogramaButtonClick);
             // 
             // ExibirHistogramaButton
             // 
@@ -147,7 +149,7 @@
             this.ExibirHistogramaButton.TabIndex = 7;
             this.ExibirHistogramaButton.Text = "Exibir";
             this.ExibirHistogramaButton.UseVisualStyleBackColor = false;
-            this.ExibirHistogramaButton.Click += new System.EventHandler(this.button2_Click);
+            this.ExibirHistogramaButton.Click += new System.EventHandler(this.exibirHistogramaButtonClick);
             // 
             // label3
             // 
@@ -158,22 +160,21 @@
             this.label3.Size = new System.Drawing.Size(60, 13);
             this.label3.TabIndex = 6;
             this.label3.Text = "Histograma";
-            this.label3.Click += new System.EventHandler(this.label3_Click);
             // 
-            // especificarButton
+            // EspecificarButton
             // 
-            this.especificarButton.BackColor = System.Drawing.Color.White;
-            this.especificarButton.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.especificarButton.Enabled = false;
-            this.especificarButton.FlatAppearance.BorderSize = 0;
-            this.especificarButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.especificarButton.Location = new System.Drawing.Point(233, 179);
-            this.especificarButton.Name = "especificarButton";
-            this.especificarButton.Size = new System.Drawing.Size(91, 23);
-            this.especificarButton.TabIndex = 10;
-            this.especificarButton.Text = "Especificar";
-            this.especificarButton.UseVisualStyleBackColor = false;
-            this.especificarButton.Click += new System.EventHandler(this.especificarButton_Click);
+            this.EspecificarButton.BackColor = System.Drawing.Color.White;
+            this.EspecificarButton.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.EspecificarButton.Enabled = false;
+            this.EspecificarButton.FlatAppearance.BorderSize = 0;
+            this.EspecificarButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.EspecificarButton.Location = new System.Drawing.Point(233, 179);
+            this.EspecificarButton.Name = "EspecificarButton";
+            this.EspecificarButton.Size = new System.Drawing.Size(91, 23);
+            this.EspecificarButton.TabIndex = 10;
+            this.EspecificarButton.Text = "Especificar";
+            this.EspecificarButton.UseVisualStyleBackColor = false;
+            this.EspecificarButton.Click += new System.EventHandler(this.especificarButton_Click);
             // 
             // converterButton
             // 
@@ -230,18 +231,32 @@
             this.compararButton.Text = "Comparar Histogramas";
             this.compararButton.UseVisualStyleBackColor = false;
             // 
+            // ExibirImagemButton
+            // 
+            this.ExibirImagemButton.AutoSize = true;
+            this.ExibirImagemButton.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.ExibirImagemButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.ExibirImagemButton.Location = new System.Drawing.Point(289, 31);
+            this.ExibirImagemButton.Name = "ExibirImagemButton";
+            this.ExibirImagemButton.Size = new System.Drawing.Size(32, 13);
+            this.ExibirImagemButton.TabIndex = 16;
+            this.ExibirImagemButton.Text = "Exibir";
+            this.ExibirImagemButton.Visible = false;
+            this.ExibirImagemButton.Click += new System.EventHandler(this.exibirImagemButtonClick);
+            // 
             // principal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
             this.ClientSize = new System.Drawing.Size(337, 312);
+            this.Controls.Add(this.ExibirImagemButton);
             this.Controls.Add(this.compararButton);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.converterButton);
-            this.Controls.Add(this.especificarButton);
+            this.Controls.Add(this.EspecificarButton);
             this.Controls.Add(this.EqualizarButton);
             this.Controls.Add(this.ExibirHistogramaButton);
             this.Controls.Add(this.label3);
@@ -256,7 +271,6 @@
             this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "principal";
-            this.Load += new System.EventHandler(this.principal_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -273,11 +287,12 @@
         private System.Windows.Forms.Button EqualizarButton;
         private System.Windows.Forms.Button ExibirHistogramaButton;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Button especificarButton;
+        private System.Windows.Forms.Button EspecificarButton;
         private System.Windows.Forms.Button converterButton;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Button compararButton;
+        private System.Windows.Forms.Label ExibirImagemButton;
     }
 }
