@@ -1,0 +1,27 @@
+C:\Users\Cliente\source\repos\Trabalho de PDI\Trabalho de PDI\obj\Debug\Trabalho de PDI.csproj.AssemblyReference.cache
+C:\Users\Cliente\source\repos\Trabalho de PDI\Trabalho de PDI\obj\Debug\Trabalho de PDI.csproj.SuggestedBindingRedirects.cache
+C:\Users\Cliente\source\repos\Trabalho de PDI\Trabalho de PDI\obj\Debug\Trabalho_de_PDI.Properties.Resources.resources
+C:\Users\Cliente\source\repos\Trabalho de PDI\Trabalho de PDI\obj\Debug\Trabalho de PDI.csproj.GenerateResource.cache
+C:\Users\Cliente\source\repos\Trabalho de PDI\Trabalho de PDI\obj\Debug\Trabalho de PDI.csproj.CoreCompileInputs.cache
+C:\Users\Cliente\source\repos\Trabalho de PDI\Trabalho de PDI\bin\Debug\Trabalho de PDI.exe.config
+C:\Users\Cliente\source\repos\Trabalho de PDI\Trabalho de PDI\bin\Debug\Trabalho de PDI.exe
+C:\Users\Cliente\source\repos\Trabalho de PDI\Trabalho de PDI\bin\Debug\Trabalho de PDI.pdb
+C:\Users\Cliente\source\repos\Trabalho de PDI\Trabalho de PDI\bin\Debug\MetroFramework.Design.dll
+C:\Users\Cliente\source\repos\Trabalho de PDI\Trabalho de PDI\bin\Debug\MetroFramework.dll
+C:\Users\Cliente\source\repos\Trabalho de PDI\Trabalho de PDI\bin\Debug\MetroFramework.Fonts.dll
+C:\Users\Cliente\source\repos\Trabalho de PDI\Trabalho de PDI\obj\Debug\Trabalho de PDI.csproj.CopyComplete
+C:\Users\Cliente\source\repos\Trabalho de PDI\Trabalho de PDI\obj\Debug\Trabalho de PDI.exe
+C:\Users\Cliente\source\repos\Trabalho de PDI\Trabalho de PDI\obj\Debug\Trabalho de PDI.pdb
+C:\Users\Cliente\source\repos\Trabalho de PDI\Trabalho de PDI\obj\Debug\Trabalho_de_PDI.InterfacePDI.resources
+C:\Users\Cliente\source\repos\Trabalho de PDI\Trabalho de PDI\bin\Debug\pt-BR\Trabalho de PDI.resources.dll
+C:\Users\Cliente\source\repos\Trabalho de PDI\Trabalho de PDI\obj\Debug\Trabalho_de_PDI.InterfacePDI.pt-BR.resources
+C:\Users\Cliente\source\repos\Trabalho de PDI\Trabalho de PDI\obj\Debug\pt-BR\Trabalho de PDI.resources.dll
+C:\Users\Cliente\source\repos\Trabalho de PDI\Trabalho de PDI\obj\Debug\Trabalho_de_PDI.Form3.resources
+C:\Users\Cliente\source\repos\Trabalho de PDI\Trabalho de PDI\obj\Debug\Trabalho_de_PDI.teste.resources
+C:\Users\Cliente\source\repos\Trabalho de PDI\Trabalho de PDI\obj\Debug\Trabalho_de_PDI.inicio.resources
+C:\Users\Cliente\source\repos\Trabalho de PDI\Trabalho de PDI\obj\Debug\Trabalho_de_PDI.TelaInicio.resources
+C:\Users\Cliente\source\repos\Trabalho de PDI\Trabalho de PDI\obj\Debug\Trabalho_de_PDI.TelaDeEspera.resources
+C:\Users\Cliente\source\repos\Trabalho de PDI\Trabalho de PDI\obj\Debug\Trabalho_de_PDI.exibirImagem.resources
+C:\Users\Cliente\source\repos\Trabalho de PDI\Trabalho de PDI\obj\Debug\Trabalho_de_PDI.principal.resources
+C:\Users\Cliente\source\repos\Trabalho de PDI\Trabalho de PDI\obj\Debug\Trabalho_de_PDI.exibirHistograma.resources
+C:\Users\Cliente\source\repos\Trabalho de PDI\Trabalho de PDI\obj\Debug\Trabalho_de_PDI.EscolherCanalDeCor.resources
