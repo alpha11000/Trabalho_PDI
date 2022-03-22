@@ -76,15 +76,37 @@ namespace Trabalho_de_PDI
             Bitmap redC = ColorProcessing.getEspecificColorChanel(bitmapImage, 0);
             new exibirImagem(redC, fileName + " (vermelho)").Show();
 
+            SortedDictionary<double, int> redH = HistogramProcessing.getHistogramFromImage(bitmapImage);
+            new exibirHistograma(redH, 1, "RED");
+
             Bitmap greenC = ColorProcessing.getEspecificColorChanel(bitmapImage, 1);
             new exibirImagem(greenC, fileName + " (verde)").Show();
 
+            SortedDictionary<double, int> greenH = HistogramProcessing.getHistogramFromImage(bitmapImage);
+            new exibirHistograma(greenH, 1, "GREEN");
+
             Bitmap blueC = ColorProcessing.getEspecificColorChanel(bitmapImage, 2);
             new exibirImagem(blueC, fileName + " (azul)").Show();
+
+            
         }
 
         private void equalizarHistogramaButtonClick(object sender, EventArgs e)
         {
+            /*
+            //para estudo de caso:
+            SortedDictionary<double, int> redEq = HistogramProcessing.getHistogramFromImage(bitmapImage, 0);
+            Bitmap red = ColorProcessing.getEspecificColorChanel(bitmapImage, 0);
+            Bitmap bw = ColorProcessing.ConvertToBlackWhite(red);
+
+            Dictionary<double, double> eqRed = HistogramProcessing.getNewValuesToHistogramEqualize(ColorProcessing.convertBitmapToHsvMatrix(bw));
+            HSV[,] eqRedHSV = HistogramProcessing.getMappedHsvMatrix(ColorProcessing.convertBitmapToHsvMatrix(bw), eqRed);
+            SortedDictionary<double, int> hist = HistogramProcessing.getHistogramFromHsvMatrix(eqRedHSV);
+            new exibirHistograma(hist, 0, "Histograma Equalizado (valor, quantidade)").Show();
+            Bitmap outp = ColorProcessing.convertHsvMatrixToBitmap(eqRedHSV);
+            new exibirImagem(ColorProcessing.getEspecificColorChanel(outp, 0), fileName + "(equalized)").Show();
+            */
+            
             if(equalizedHsvMatrix == null)
             {
                 equalizedValuesMap = HistogramProcessing.getNewValuesToHistogramEqualize(hsvMatrix, histogram);
@@ -94,13 +116,14 @@ namespace Trabalho_de_PDI
 
             }
 
-            new exibirHistograma(equalizedHistogram, 4, "Histograma Equalizado (valor, quantidade)").Show();
+            new exibirHistograma(equalizedHistogram, 0, "Histograma Equalizado (valor, quantidade)").Show();
             new exibirImagem(equalizedHsvMatrix, fileName + "(equalized)").Show();
         }
 
         private void exibirHistogramaButtonClick(object sender, EventArgs e)
         {
-            new exibirHistograma(histogram, 4).Show();
+            new EscolherCanalDeCor("Distribuição de frequencia", bitmapImage, histogram).ShowDialog();
+            //new exibirHistograma(histogram, 4).Show();
         }
 
         private void especificarButton_Click(object sender, EventArgs e)
@@ -130,7 +153,7 @@ namespace Trabalho_de_PDI
                 HSV[,] especifiedOutput = HistogramProcessing.getMappedHsvMatrix(hsvMatrix, mappedValues);
                 especifiedOutputHistogram = HistogramProcessing.getHistogramFromHsvMatrix(especifiedOutput);
 
-                new exibirHistograma(especifiedOutputHistogram, 4, "Histograma especificado (valor, quantidade)").Show();
+                new exibirHistograma(especifiedOutputHistogram, 0, "Histograma especificado (valor, quantidade)").Show();
                 new exibirImagem(especifiedOutput, fileName + "(Especificada").Show();
             
             }
@@ -143,7 +166,8 @@ namespace Trabalho_de_PDI
 
         private void compararButton_Click(object sender, EventArgs e)
         {
-            if(especifiedOutputHistogram == null || equalizedHistogram == null)
+            //exibe os três histogramas lado a lado
+            /*if(especifiedOutputHistogram == null || equalizedHistogram == null)
             {
                 MessageBox.Show("Você deve especificar o histograma primeiro!", "Erro", 0, MessageBoxIcon.Error);
                 return;
@@ -159,7 +183,13 @@ namespace Trabalho_de_PDI
             Point especified = new Point(showEqualizedHistogram.Right - 200,
                                             showOriginalHistogram.Location.Y);
             exibirHistograma showEspecifiedHistogram = new exibirHistograma(especifiedOutputHistogram, 4, "Histograma especificado (valor, quantidade)", new Point[] { especified });
-            showEspecifiedHistogram.Show();
+            showEspecifiedHistogram.Show();*/
+            new exibirComparacao(histogram, equalizedHistogram, especifiedOutputHistogram).Show();
+        }
+
+        private void converterButton_Click(object sender, EventArgs e)
+        {
+            new ConverterCor().ShowDialog();
         }
     }
 }

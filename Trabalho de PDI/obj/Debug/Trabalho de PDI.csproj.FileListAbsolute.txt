@@ -13,3 +13,5 @@ C:\Users\Cliente\source\repos\Trabalho de PDI\Trabalho de PDI\obj\Debug\Trabalho
 C:\Users\Cliente\source\repos\Trabalho de PDI\Trabalho de PDI\obj\Debug\Trabalho_de_PDI.principal.resources
 C:\Users\Cliente\source\repos\Trabalho de PDI\Trabalho de PDI\obj\Debug\Trabalho_de_PDI.exibirHistograma.resources
 C:\Users\Cliente\source\repos\Trabalho de PDI\Trabalho de PDI\obj\Debug\Trabalho_de_PDI.EscolherCanalDeCor.resources
+C:\Users\Cliente\source\repos\Trabalho de PDI\Trabalho de PDI\obj\Debug\Trabalho_de_PDI.ConverterCor.resources
+C:\Users\Cliente\source\repos\Trabalho de PDI\Trabalho de PDI\obj\Debug\Trabalho_de_PDI.exibirComparacao.resources

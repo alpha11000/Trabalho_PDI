@@ -7,9 +7,9 @@ namespace Trabalho_de_PDI
 {
     internal class HistogramProcessing
     {
-        public static SortedDictionary<int,int> getHistogramFromImage(Bitmap originalImage, int channel = 0)
+        public static SortedDictionary<double,int> getHistogramFromImage(Bitmap originalImage, int channel = 0)
         {
-            Dictionary<int, int> histogram = new Dictionary<int, int>();
+            Dictionary<double, int> histogram = new Dictionary<double, int>();
 
 
             for (int i = 0; i < originalImage.Width; i++)
@@ -17,7 +17,8 @@ namespace Trabalho_de_PDI
                 for (int j = 0; j < originalImage.Height; j++)
                 {
                     Color color = originalImage.GetPixel(i, j);
-                    int colorIntensity = (channel == 0) ? color.R : (channel == 1) ? color.G : color.B;
+                    double colorIntensity = (channel == 0) ? color.R : (channel == 1) ? color.G : color.B;
+                    colorIntensity /= 255.0;
 
                     if (histogram.ContainsKey(colorIntensity))
                     {
@@ -30,7 +31,7 @@ namespace Trabalho_de_PDI
                 }
             }
 
-            return new SortedDictionary<int,int>(histogram);
+            return new SortedDictionary<double,int>(histogram);
         }
 
         //gera o histograma a partir dos valores V de cada elemento da matriz de HSV's

@@ -199,6 +199,7 @@ namespace Trabalho_de_PDI
                 {
                     Color pixelColor = originalImage.GetPixel(i, j); //obtem a cor do pixel atual
                     int gray = (pixelColor.R + pixelColor.G + pixelColor.B) / 3; //obtem a escala de cinza a partir da media aritmética entre os três canais de cores do pixel original
+                    //int gray = Math.Max(pixelColor.R, Math.Max( pixelColor.G , pixelColor.B)); //para estudo de caso
 
                     Color grayScaleColor = Color.FromArgb(pixelColor.A, gray, gray, gray); //atribui o valor da média aos três canai da nova cor, a qual resultará em uma escala de cinza
                     outputImage.SetPixel(i, j, grayScaleColor); //atribui a cor em escala de cinza ao pixel da imagem de saída

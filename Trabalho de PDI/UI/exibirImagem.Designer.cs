@@ -31,9 +31,9 @@
             this.ExportarButton = new System.Windows.Forms.Button();
             this.imagem = new System.Windows.Forms.PictureBox();
             this.saturacaoPanel = new System.Windows.Forms.Panel();
-            this.saturacaoText = new System.Windows.Forms.Label();
-            this.saturacaoTrack = new System.Windows.Forms.TrackBar();
             this.saturacaoButton = new System.Windows.Forms.Button();
+            this.saturacaoTrack = new System.Windows.Forms.TrackBar();
+            this.saturacaoText = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.imagem)).BeginInit();
             this.saturacaoPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.saturacaoTrack)).BeginInit();
@@ -77,16 +77,17 @@
             this.saturacaoPanel.TabIndex = 2;
             this.saturacaoPanel.Visible = false;
             // 
-            // saturacaoText
+            // saturacaoButton
             // 
-            this.saturacaoText.AutoSize = true;
-            this.saturacaoText.Dock = System.Windows.Forms.DockStyle.Left;
-            this.saturacaoText.ForeColor = System.Drawing.Color.White;
-            this.saturacaoText.Location = new System.Drawing.Point(4, 4);
-            this.saturacaoText.Name = "saturacaoText";
-            this.saturacaoText.Size = new System.Drawing.Size(121, 13);
-            this.saturacaoText.TabIndex = 0;
-            this.saturacaoText.Text = "Incrementar Saturação  ";
+            this.saturacaoButton.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.saturacaoButton.Dock = System.Windows.Forms.DockStyle.Right;
+            this.saturacaoButton.Location = new System.Drawing.Point(305, 4);
+            this.saturacaoButton.Name = "saturacaoButton";
+            this.saturacaoButton.Size = new System.Drawing.Size(75, 20);
+            this.saturacaoButton.TabIndex = 2;
+            this.saturacaoButton.Text = "Ajustar";
+            this.saturacaoButton.UseVisualStyleBackColor = true;
+            this.saturacaoButton.Click += new System.EventHandler(this.saturacaoButton_Click);
             // 
             // saturacaoTrack
             // 
@@ -100,17 +101,16 @@
             this.saturacaoTrack.TabIndex = 1;
             this.saturacaoTrack.TickFrequency = 25;
             // 
-            // saturacaoButton
+            // saturacaoText
             // 
-            this.saturacaoButton.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.saturacaoButton.Dock = System.Windows.Forms.DockStyle.Right;
-            this.saturacaoButton.Location = new System.Drawing.Point(305, 4);
-            this.saturacaoButton.Name = "saturacaoButton";
-            this.saturacaoButton.Size = new System.Drawing.Size(75, 20);
-            this.saturacaoButton.TabIndex = 2;
-            this.saturacaoButton.Text = "Ajustar";
-            this.saturacaoButton.UseVisualStyleBackColor = true;
-            this.saturacaoButton.Click += new System.EventHandler(this.saturacaoButton_Click);
+            this.saturacaoText.AutoSize = true;
+            this.saturacaoText.Dock = System.Windows.Forms.DockStyle.Left;
+            this.saturacaoText.ForeColor = System.Drawing.Color.White;
+            this.saturacaoText.Location = new System.Drawing.Point(4, 4);
+            this.saturacaoText.Name = "saturacaoText";
+            this.saturacaoText.Size = new System.Drawing.Size(121, 13);
+            this.saturacaoText.TabIndex = 0;
+            this.saturacaoText.Text = "Incrementar Saturação  ";
             // 
             // exibirImagem
             // 

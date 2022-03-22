@@ -38,7 +38,7 @@
             this.ExibirHistogramaButton = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
             this.EspecificarButton = new System.Windows.Forms.Button();
-            this.converterButton = new System.Windows.Forms.Button();
+            this.ConverterButton = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
@@ -178,19 +178,19 @@
             this.EspecificarButton.UseVisualStyleBackColor = false;
             this.EspecificarButton.Click += new System.EventHandler(this.especificarButton_Click);
             // 
-            // converterButton
+            // ConverterButton
             // 
-            this.converterButton.BackColor = System.Drawing.Color.White;
-            this.converterButton.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.converterButton.Enabled = false;
-            this.converterButton.FlatAppearance.BorderSize = 0;
-            this.converterButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.converterButton.Location = new System.Drawing.Point(236, 120);
-            this.converterButton.Name = "converterButton";
-            this.converterButton.Size = new System.Drawing.Size(91, 23);
-            this.converterButton.TabIndex = 11;
-            this.converterButton.Text = "Converter Cor";
-            this.converterButton.UseVisualStyleBackColor = false;
+            this.ConverterButton.BackColor = System.Drawing.Color.White;
+            this.ConverterButton.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.ConverterButton.FlatAppearance.BorderSize = 0;
+            this.ConverterButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.ConverterButton.Location = new System.Drawing.Point(236, 120);
+            this.ConverterButton.Name = "ConverterButton";
+            this.ConverterButton.Size = new System.Drawing.Size(91, 23);
+            this.ConverterButton.TabIndex = 11;
+            this.ConverterButton.Text = "Converter Cor";
+            this.ConverterButton.UseVisualStyleBackColor = false;
+            this.ConverterButton.Click += new System.EventHandler(this.converterButton_Click);
             // 
             // label4
             // 
@@ -219,7 +219,7 @@
             this.label6.Size = new System.Drawing.Size(248, 1);
             this.label6.TabIndex = 14;
             // 
-            // compararButton
+            // CompararButton
             // 
             this.CompararButton.BackColor = System.Drawing.Color.White;
             this.CompararButton.Cursor = System.Windows.Forms.Cursors.Hand;
@@ -227,7 +227,7 @@
             this.CompararButton.FlatAppearance.BorderSize = 0;
             this.CompararButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.CompararButton.Location = new System.Drawing.Point(16, 231);
-            this.CompararButton.Name = "compararButton";
+            this.CompararButton.Name = "CompararButton";
             this.CompararButton.Size = new System.Drawing.Size(311, 24);
             this.CompararButton.TabIndex = 15;
             this.CompararButton.Text = "Comparar Histogramas";
@@ -262,7 +262,7 @@
             this.panel1.Controls.Add(this.fileNameLabel);
             this.panel1.Controls.Add(this.label4);
             this.panel1.Controls.Add(this.label3);
-            this.panel1.Controls.Add(this.converterButton);
+            this.panel1.Controls.Add(this.ConverterButton);
             this.panel1.Controls.Add(this.ExibirHistogramaButton);
             this.panel1.Controls.Add(this.EspecificarButton);
             this.panel1.Controls.Add(this.EqualizarButton);
@@ -314,7 +314,7 @@
         private System.Windows.Forms.Button ExibirHistogramaButton;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Button EspecificarButton;
-        private System.Windows.Forms.Button converterButton;
+        private System.Windows.Forms.Button ConverterButton;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label6;
