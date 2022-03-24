@@ -50,72 +50,72 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Codigos\HistogramProcessing.cs" />
-    <Compile Include="Codigos\ColorProcessing.cs" />
-    <Compile Include="Codigos\HSV.cs" />
-    <Compile Include="UI\ConverterCor.cs">
+    <Compile Include="Codigos\Processamento\HistogramProcessing.cs" />
+    <Compile Include="Codigos\Processamento\ColorProcessing.cs" />
+    <Compile Include="Codigos\Processamento\HSV.cs" />
+    <Compile Include="Codigos\UI\ConverterCor.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="UI\ConverterCor.Designer.cs">
+    <Compile Include="Codigos\UI\ConverterCor.Designer.cs">
       <DependentUpon>ConverterCor.cs</DependentUpon>
     </Compile>
-    <Compile Include="UI\EscolherCanalDeCor.cs">
+    <Compile Include="Codigos\UI\EscolherCanalDeCor.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="UI\EscolherCanalDeCor.Designer.cs">
+    <Compile Include="Codigos\UI\EscolherCanalDeCor.Designer.cs">
       <DependentUpon>EscolherCanalDeCor.cs</DependentUpon>
     </Compile>
-    <Compile Include="UI\exibirComparacao.cs">
+    <Compile Include="Codigos\UI\exibirComparacao.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="UI\exibirComparacao.Designer.cs">
+    <Compile Include="Codigos\UI\exibirComparacao.Designer.cs">
       <DependentUpon>exibirComparacao.cs</DependentUpon>
     </Compile>
-    <Compile Include="UI\exibirHistograma.cs">
+    <Compile Include="Codigos\UI\exibirHistograma.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="UI\exibirHistograma.Designer.cs">
+    <Compile Include="Codigos\UI\exibirHistograma.Designer.cs">
       <DependentUpon>exibirHistograma.cs</DependentUpon>
     </Compile>
-    <Compile Include="UI\exibirImagem.cs">
+    <Compile Include="Codigos\UI\exibirImagem.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="UI\exibirImagem.Designer.cs">
+    <Compile Include="Codigos\UI\exibirImagem.Designer.cs">
       <DependentUpon>exibirImagem.cs</DependentUpon>
     </Compile>
-    <Compile Include="UI\principal.cs">
+    <Compile Include="Codigos\UI\principal.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="UI\principal.Designer.cs">
+    <Compile Include="Codigos\UI\principal.Designer.cs">
       <DependentUpon>principal.cs</DependentUpon>
     </Compile>
-    <Compile Include="UI\TelaDeEspera.cs">
+    <Compile Include="Codigos\UI\TelaDeEspera.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="UI\TelaDeEspera.Designer.cs">
+    <Compile Include="Codigos\UI\TelaDeEspera.Designer.cs">
       <DependentUpon>TelaDeEspera.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="UI\ConverterCor.resx">
+    <EmbeddedResource Include="Codigos\UI\ConverterCor.resx">
       <DependentUpon>ConverterCor.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UI\EscolherCanalDeCor.resx">
+    <EmbeddedResource Include="Codigos\UI\EscolherCanalDeCor.resx">
       <DependentUpon>EscolherCanalDeCor.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UI\exibirComparacao.resx">
+    <EmbeddedResource Include="Codigos\UI\exibirComparacao.resx">
       <DependentUpon>exibirComparacao.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UI\exibirHistograma.resx">
+    <EmbeddedResource Include="Codigos\UI\exibirHistograma.resx">
       <DependentUpon>exibirHistograma.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UI\exibirImagem.resx">
+    <EmbeddedResource Include="Codigos\UI\exibirImagem.resx">
       <DependentUpon>exibirImagem.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UI\principal.resx">
+    <EmbeddedResource Include="Codigos\UI\principal.resx">
       <DependentUpon>principal.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UI\TelaDeEspera.resx">
+    <EmbeddedResource Include="Codigos\UI\TelaDeEspera.resx">
       <DependentUpon>TelaDeEspera.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -140,9 +140,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\folder-open-solid-white.png" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

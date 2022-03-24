@@ -59,15 +59,5 @@ namespace Trabalho_de_PDI.Properties {
                 resourceCulture = value;
             }
         }
-        
-        /// <summary>
-        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap folder_open_solid_white {
-            get {
-                object obj = ResourceManager.GetObject("folder-open-solid-white", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
     }
 }
