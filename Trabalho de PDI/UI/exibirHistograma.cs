@@ -14,7 +14,7 @@ namespace Trabalho_de_PDI
     {
         private String name;
         private SortedDictionary<double, int> histogram; //value,count
-        private static Color[] colors = {Color.White, Color.Red, Color.Green, Color.Blue, Color.FromArgb(56, 178, 253) };
+        private static Color[] colors = {Color.White, Color.Red, Color.Green, Color.Blue, Color.FromArgb(100,100,100)};
         private Color color;
         private Point[] location;
 

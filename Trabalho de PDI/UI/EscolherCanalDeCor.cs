@@ -13,16 +13,31 @@ namespace Trabalho_de_PDI
     public partial class EscolherCanalDeCor : Form
     {
         private Bitmap originalImageBitmap;
-        bool exibirHistograma;
-        SortedDictionary<double, int> intensityHistogram;
+        private HSV[,] intensityEqHSVMatrix;
+        private bool exibirHistograma;
+        private SortedDictionary<double, int> intensityHistogram;
+        private SortedDictionary<double, double> intensityEq;
+        private bool equalize;
+        private int[] choice;
 
         public EscolherCanalDeCor(String title, Bitmap image, SortedDictionary<double, int> intensityHistogram, bool exibirHistograma = true)
         {
-            InitializeComponent();
-            textLabel.Text = title;
+            equalize = false;
             this.exibirHistograma = exibirHistograma;
             originalImageBitmap = image;
             this.intensityHistogram = intensityHistogram;
+
+            InitializeComponent();
+            
+            textLabel.Text = title;
+
+        }
+
+        public EscolherCanalDeCor(String title, ref int[] choice)
+        {
+            equalize = true;
+            this.choice = choice;
+            InitializeComponent();
         }
 
         private void EscolherCanalDeCor_Load(object sender, EventArgs e)
@@ -44,10 +59,25 @@ namespace Trabalho_de_PDI
 
         private void escolherButton_Click(object sender, EventArgs e)
         {
+            if (equalize)
+            {
+                choice[0] = comboBox1.SelectedIndex;
+            }
+            else
+            {
+                showHists();
+            }
+
+            Close();
+            
+        }
+
+        private void showHists()
+        {
             SortedDictionary<double, int> histogram;
             int choose = comboBox1.SelectedIndex;
 
-            if(choose == 0)
+            if (choose == 0)
             {
                 new exibirHistograma(intensityHistogram, 0).Show();
             }
@@ -64,9 +94,6 @@ namespace Trabalho_de_PDI
                     new exibirHistograma(histogram, i + 1).Show();
                 }
             }
-
-            Close();
-            
         }
     }
 }

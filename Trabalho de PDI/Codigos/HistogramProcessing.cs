@@ -34,6 +34,45 @@ namespace Trabalho_de_PDI
             return new SortedDictionary<double,int>(histogram);
         }
 
+        //irá gerar a nova imagem considerando õ resultado da equalização individual de cada canal de cor
+        public static Bitmap getMappedBitmap(Bitmap original, Dictionary<double, double> redC = null,
+            Dictionary<double,double> greenC = null, Dictionary<double, double> blueC = null, bool ignoreNonSeteChannels = false){
+            Bitmap output = new Bitmap(original.Width, original.Height);
+            int[] factor = new int[] { 1, 1, 1 };
+
+            int ignoreInt = (ignoreNonSeteChannels) ? 0 : 1;
+
+            if(redC == null) {factor[0] = 0;}
+            if(greenC == null) {factor[1] = 0;}
+            if(blueC == null) {factor[2] = 0;}
+
+            for(int i = 0; i < original.Width; i++)
+            {
+                for(int j = 0; j < original.Height; j++)
+                {
+                    double r, g, b;
+                    Color originalColor = original.GetPixel(i, j);
+
+                    r = (factor[0] == 0) ?
+                        originalColor.R * ignoreInt :
+                        ((redC.ContainsKey((double)originalColor.R)) ? redC[originalColor.R] : originalColor.R);
+                   
+                    g = (factor[1] == 0) ?
+                        originalColor.G * ignoreInt : 
+                        ((greenC.ContainsKey(originalColor.G)) ? greenC[originalColor.G] : originalColor.G) * factor[1];
+                    
+                    b = (factor[2] == 0) ?
+                        originalColor.B * ignoreInt : 
+                        ((blueC.ContainsKey(originalColor.B)) ? blueC[originalColor.B] : originalColor.B) * factor[2];
+
+                    Color mapped = Color.FromArgb(originalColor.A, (int)r, (int)g, (int)b);
+                    output.SetPixel(i, j, mapped);
+                }
+            }
+
+            return output;
+        }
+
         //gera o histograma a partir dos valores V de cada elemento da matriz de HSV's
         public static SortedDictionary<double, int> getHistogramFromHsvMatrix(HSV[,] hsvMatrix)
         {
@@ -146,7 +185,10 @@ namespace Trabalho_de_PDI
         }
 
         //retorna o mapeamento dos valores da matriz equalizada
-        public static Dictionary<double, double> getNewValuesToHistogramEqualize(HSV[,] hsvMatrix, SortedDictionary<double, int> histogram = null){ //MN = image width * height
+        public static Dictionary<double, double> getNewValuesToHistogramEqualize(HSV[,] hsvMatrix, SortedDictionary<double, int> histogram = null, int MN = 0, double multiply = 255)//não setar MN a menos que se esteja trabalhando com histograma de rgb
+        { //MN = image width * height
+
+            if (hsvMatrix == null && MN == 0) return null;
 
             if(histogram == null) { 
                 histogram = getHistogramFromHsvMatrix(hsvMatrix); 
@@ -156,14 +198,16 @@ namespace Trabalho_de_PDI
 
             SortedDictionary<double, double> normalizedHistogram = new SortedDictionary<double, double>();
 
-            double MN = hsvMatrix.GetLength(0) * hsvMatrix.GetLength(1); //total de elementos da matriz
+            double multp = (MN == 0) ? 1 : multiply;
+            double mn = (MN == 0) ? hsvMatrix.GetLength(0) * hsvMatrix.GetLength(1):(double)MN; //total de elementos da matriz
 
             //normaliza as quantidades dos elementos (quantidade/MN)
             foreach(var peer in histogram)
             {
-                double pr = peer.Value / MN;
+                double pr = (peer.Value / mn);
                 normalizedHistogram.Add(peer.Key, pr);
             }
+
 
             double prSum = 0;
 
@@ -171,7 +215,7 @@ namespace Trabalho_de_PDI
             foreach(var peer in normalizedHistogram)
             {
                 prSum += peer.Value;
-                output.Add(peer.Key, prSum);
+                output.Add(peer.Key * multp, prSum * multp);
 
             }
 

@@ -14,12 +14,16 @@ namespace Trabalho_de_PDI
     public partial class exibirImagem : Form
     {
         HSV[,] hsvMatrix = null;
+        Bitmap bitmapImage = null;
 
-        public exibirImagem(Image image,  String imageName = "imagem")
+        public exibirImagem(Bitmap image,  String imageName = "imagem", bool increaseSaturation = false)
         {
             InitializeComponent();
             this.Text = imageName;
             imagem.Image = image;
+            bitmapImage = image;
+
+            if (increaseSaturation) saturacaoPanel.Visible = true;
         }
 
         public exibirImagem(HSV[,] hsvMatrix, String imageName = "imagem")
@@ -48,6 +52,18 @@ namespace Trabalho_de_PDI
 
         private void saturacaoButton_Click(object sender, EventArgs e)
         {
+            if(hsvMatrix == null)
+            {
+                if(bitmapImage != null)
+                {
+                    hsvMatrix = ColorProcessing.convertBitmapToHsvMatrix(bitmapImage);
+                }
+                else
+                {
+                    return;
+                }
+            }
+
             double saturationIncrease = saturacaoTrack.Value / 100.0;
             HSV[,] saturationIncreased = ColorProcessing.increaseHsvMatrixSaturation(hsvMatrix, saturationIncrease);
             imagem.Image = ColorProcessing.convertHsvMatrixToBitmap(saturationIncreased);
